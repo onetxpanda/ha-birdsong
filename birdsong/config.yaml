@@ -1,0 +1,21 @@
+name: Birdsong
+version: "0.42.0"
+slug: birdsong
+description: The birds BirdNET-Go has heard, drawn as one plate of 1800s illustrations
+url: https://github.com/onetxpanda/ha-birdsong
+arch:
+  - amd64
+  - aarch64
+init: false
+ingress: true
+ingress_port: 80
+panel_icon: mdi:bird
+panel_title: Birdsong
+ports:
+  80/tcp: null
+ports_description:
+  80/tcp: The page outside Home Assistant (no login; off unless a port is set)
+options:
+  birdnet_url: http://db21ed7f-birdnet-go:8080
+schema:
+  birdnet_url: url

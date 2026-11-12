@@ -1,0 +1,12 @@
+#!/bin/sh
+# Home Assistant passes the add-on options in /data/options.json. This runs
+# (sourced, so the export carries over) before the image's own start-up
+# scripts, which write the nginx configuration from BIRDNET_URL.
+OPTIONS=/data/options.json
+if [ -f "$OPTIONS" ]; then
+    url=$(jq -r '.birdnet_url // empty' "$OPTIONS")
+    if [ -n "$url" ]; then
+        export BIRDNET_URL="$url"
+    fi
+fi
+echo "birdsong: reading BirdNET-Go at ${BIRDNET_URL}"
